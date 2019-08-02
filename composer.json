@@ -1,0 +1,33 @@
+{
+  "name": "blackhades/php-zipkin",
+  "type": "library",
+  "description": "Zipkin's PHP tracer library",
+  "keywords": [
+    "zipkin",
+    "php",
+    "tracing",
+    "tracer"
+  ],
+  "homepage": "https://github.com/blackhades/php-zipkin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Micheal Akinwonmi",
+      "email": "michealakinwonmi@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "BlackHades\\PHPZipkin\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^7.0",
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.7.0",
+    "laravel/framework": "5.3.*"
+  }
+}
