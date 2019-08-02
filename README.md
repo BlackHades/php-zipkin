@@ -38,7 +38,7 @@ $trace->record(
 ```
 
 ### Laravel integration (simple)
-Add ENV Variables
+Update ENV
 
 ```
 ZIPKIN_ENDPOINT_URL=http://localhost:9411/api/v2/span
