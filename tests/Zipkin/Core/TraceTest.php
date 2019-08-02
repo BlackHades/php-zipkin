@@ -1,9 +1,9 @@
 <?php
 
-use Drefined\Zipkin\Core\Annotation;
-use Drefined\Zipkin\Core\BinaryAnnotation;
-use Drefined\Zipkin\Core\Endpoint;
-use Drefined\Zipkin\Core\Trace;
+use BlackHades\PHPZipkin\Zipkin\Core\Annotation;
+use BlackHades\PHPZipkin\Zipkin\Core\BinaryAnnotation;
+use BlackHades\PHPZipkin\Zipkin\Core\Endpoint;
+use BlackHades\PHPZipkin\Zipkin\Core\Trace;
 
 class TraceTest extends \PHPUnit\Framework\TestCase
 {

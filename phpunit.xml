@@ -13,4 +13,16 @@
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
+
+
+    <php>
+        <server name="APP_ENV" value="testing"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="MAIL_DRIVER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="ZIPKIN_APP_NAME" value="zipkin-app"/>
+        <server name="ZIPKIN_ENDPOINT_URL" value="http://localhost:9411/api/v2/span"/>
+    </php>
 </phpunit>
