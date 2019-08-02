@@ -11,7 +11,7 @@ Incomplete, only has one transport with zero integrations. This library contains
 The recommended way to install PHP-Zipkin is through [Composer](https://getcomposer.org/)
 
 ```bash
-composer require drefined/php-zipkin
+composer require blackhades/php-zipkin
 ```
 
 ## Example usage
@@ -110,6 +110,9 @@ return [
 ## License
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+
+## Forked From
+- drefined/php-zipkin
 
 ## Contributors
 
