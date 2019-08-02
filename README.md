@@ -38,6 +38,13 @@ $trace->record(
 ```
 
 ### Laravel integration (simple)
+Add ENV Variables
+
+```
+ZIPKIN_ENDPOINT_URL=http://localhost:9411/api/v2/span
+
+ZIPKIN_APP_NAME=zipkin-app
+```
 
 Add middleware and service provider in proper locations.
 
