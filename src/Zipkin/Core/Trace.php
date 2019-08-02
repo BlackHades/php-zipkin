@@ -43,7 +43,6 @@ class Trace
 
         if (empty($tracer)) {
             $client       = new Client();
-//            dd(config("zipkin.endpoint_url"));
             $logger       = new HTTPLogger($client, config("zipkin.endpoint_url"));
             $this->tracer = new Tracer($logger, $sampled, $debug);
         } else {
