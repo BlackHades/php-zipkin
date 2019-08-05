@@ -9,6 +9,8 @@ use BlackHades\PHPZipkin\Zipkin\Instrumentation\Laravel\Services\ZipkinTracingSe
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class EnableZipkinTracing
 {
@@ -53,6 +55,7 @@ class EnableZipkinTracing
         /** @var ZipkinTracingService $tracingService */
         $tracingService = $this->app->make(ZipkinTracingService::class);
 
+//        dd(config("zipkin.app_name"));
         $endpoint = new Endpoint($ipAddress, $port, config("zipkin.app_name"));
         $tracingService->createTrace(null, $endpoint, $sampled, $debug);
 
@@ -70,15 +73,21 @@ class EnableZipkinTracing
         return $next($request);
     }
 
-    public function terminate(Request $request, Response $response)
+    public function terminate(Request $request, $response)
     {
-        /** @var ZipkinTracingService $tracingService */
-        $tracingService = $this->app->make(ZipkinTracingService::class);
+        try{
+            /** @var ZipkinTracingService $tracingService */
+            $tracingService = $this->app->make(ZipkinTracingService::class);
 
-        $trace = $tracingService->getTrace();
-        $trace->record(
-            [Annotation::generateServerSend()],
-            [BinaryAnnotation::generateString('server.response.http_status_code', $response->getStatusCode())]
-        );
+            $trace = $tracingService->getTrace();
+            $trace->record(
+                [Annotation::generateServerSend()],
+                [BinaryAnnotation::generateString('server.response.http_status_code', $response->getStatusCode())]
+            );
+        }catch (\Exception $exception){
+            Log::critical("Zipkin Critical",[
+                "exception" => $exception
+            ]);
+        }
     }
 }

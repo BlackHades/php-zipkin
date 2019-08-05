@@ -16,7 +16,6 @@ class ZipkinTracingService
         $sampled = 1.0,
         $debug = false
     ) {
-//        dd("here",$sampled, $debug);
         $this->trace = new Trace($tracer, $endpoint, $sampled, $debug);
     }
 

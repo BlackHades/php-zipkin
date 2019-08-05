@@ -1,6 +1,8 @@
 <?php
 namespace BlackHades\PHPZipkin\Zipkin\Core;
 
+use Illuminate\Support\Facades\Log;
+
 class Endpoint
 {
     /** @var string $ipv4 */
@@ -48,7 +50,7 @@ class Endpoint
     /**
      * @return string
      */
-    public function getServiceName(): string
+    public function getServiceName():string
     {
         return $this->serviceName;
     }
@@ -66,6 +68,7 @@ class Endpoint
      */
     public function toArray(): array
     {
+
         $data = [
             'serviceName' => $this->getServiceName(),
         ];
