@@ -4,6 +4,7 @@ namespace BlackHades\PHPZipkin\Zipkin\Transport;
 use BlackHades\PHPZipkin\Zipkin\Core\Span;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Log;
 
 class HTTPLogger implements LoggerInterface
 {
@@ -43,6 +44,9 @@ class HTTPLogger implements LoggerInterface
      */
     public function trace(array $spans)
     {
+        Log::critical("Logging Trace", [
+            "spans" => $spans
+        ]);
         try {
             $options = [
                 'json' => array_map([$this, 'spanToArray'], $spans),
