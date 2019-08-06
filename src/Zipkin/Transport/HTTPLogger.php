@@ -40,7 +40,7 @@ class HTTPLogger implements LoggerInterface
 
     /**
      * @param Span[] $spans
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function trace(array $spans)
     {
@@ -52,7 +52,7 @@ class HTTPLogger implements LoggerInterface
 
             $this->client->request('POST', $this->baseUrl, $options);
         } catch (RequestException $e) {
-            throw new \Exception("Failed to publish trace: {$e->getMessage()}", $e->getCode(), $e);
+//            throw new \Exception("Failed to publish trace: {$e->getMessage()}", $e->getCode(), $e);
         }
     }
 
