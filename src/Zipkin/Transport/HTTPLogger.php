@@ -44,12 +44,10 @@ class HTTPLogger implements LoggerInterface
      */
     public function trace(array $spans)
     {
-        Log::critical("Logging Trace", [
-            "spans" => $spans
-        ]);
+        $spans =  array_map([$this, 'spanToArray'], $spans);
         try {
             $options = [
-                'json' => array_map([$this, 'spanToArray'], $spans),
+                'json' => $spans,
             ];
 
             $this->client->request('POST', $this->baseUrl, $options);
