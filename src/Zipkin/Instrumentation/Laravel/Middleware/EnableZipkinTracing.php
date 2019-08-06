@@ -85,9 +85,7 @@ class EnableZipkinTracing
                 [BinaryAnnotation::generateString('server.response.http_status_code', $response->getStatusCode())]
             );
         }catch (\Exception $exception){
-            Log::critical("Zipkin Critical",[
-                "exception" => $exception
-            ]);
+
         }
     }
 }
