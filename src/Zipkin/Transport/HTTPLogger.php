@@ -1,6 +1,7 @@
 <?php
 namespace BlackHades\PHPZipkin\Zipkin\Transport;
 
+use BlackHades\PHPZipkin\exceptions\ZipKinException;
 use BlackHades\PHPZipkin\Zipkin\Core\Span;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
@@ -52,7 +53,7 @@ class HTTPLogger implements LoggerInterface
 
             $this->client->request('POST', $this->baseUrl, $options);
         } catch (RequestException $e) {
-//            throw new \Exception("Failed to publish trace: {$e->getMessage()}", $e->getCode(), $e);
+            throw new ZipKinException($e->getMessage(), $e->getCode());
         }
     }
 
